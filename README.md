@@ -15,3 +15,5 @@ Ce carnet contient des notes sur l'Intelligence Artificielle et son application 
 
 ## Historique de l'IA
 - Années 1950 : Débuts avec Alan Turing et John McCarthy. 
+ ### Nouveaux Concepts
+- **Deep Learning** : Utilisation de réseaux de neurones artificiels à plusieurs couches.  
