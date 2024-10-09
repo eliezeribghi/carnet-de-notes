@@ -1,4 +1,4 @@
-Voici quelques combinaisons de commandes Linux fréquemment utilisées qui montrent comment enchaîner plusieurs commandes pour accomplir des tâches courantes plus efficacement. Ces combinaisons utilisent souvent des opérateurs comme `|` (pipe) pour rediriger la sortie d'une commande vers une autre, ou `&&` pour exécuter une commande seulement si la précédente réussit.
+Ces combinaisons utilisent souvent des opérateurs comme `|` (pipe) pour rediriger la sortie d'une commande vers une autre, ou `&&` pour exécuter une commande seulement si la précédente réussit.
 
 ### 1. **Lister et rechercher des fichiers contenant un motif spécifique**
 Pour lister les fichiers et rechercher une chaîne de texte particulière dans ces fichiers, tu peux utiliser la combinaison de `ls` et `grep` :
