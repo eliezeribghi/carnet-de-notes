@@ -1,0 +1,63 @@
+services:
+  # laravel:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: ness_laravel
+  #   restart: unless-stopped
+  #   ports:
+  #     - '8001:8001'
+  #   volumes:
+  #     - .:/var/www/html
+  #     - /var/www/html/vendor     # protège le vendor/ du build
+  #   depends_on:
+  #     mysql:
+  #       condition: service_healthy
+  #   networks:
+  #     - ness_network
+
+  mysql:
+    image: mysql:8.0
+    container_name: ness_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ness_paris
+      MYSQL_USER: ness
+      MYSQL_PASSWORD: ness_secret
+    ports:
+      - "3307:3306"
+    volumes:
+      - ness_mysql_data:/var/lib/mysql
+    networks:
+      - ness_network
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -proot || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: ness_phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: ness
+      PMA_PASSWORD: ness_secret
+    ports:
+      - "8888:80"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - ness_network
+
+volumes:
+  ness_mysql_data:
+
+networks:
+  ness_network:
+    driver: bridge

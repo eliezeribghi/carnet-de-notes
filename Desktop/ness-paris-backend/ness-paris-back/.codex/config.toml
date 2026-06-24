@@ -1,0 +1,4 @@
+[mcp_servers.laravel-boost]
+command = "php"
+args = ["artisan", "boost:mcp"]
+cwd = "/Users/eliezeribghi/Desktop/ness-paris-backen/ness-paris-back"
